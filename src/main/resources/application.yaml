@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/woc_repository
+    username: root
+    password: 111111
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**Mapper.xml # 指定 Mapper 文件路径
+  type-aliases-package: org.example.sastwoc.entity # 指定实体类包路径
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 启用 SQL 日志输出
+
+

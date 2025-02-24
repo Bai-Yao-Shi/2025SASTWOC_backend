@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.sastwoc.mapper.PersonMapper">
+    <select id="testCaptain" resultType="Integer" parameterType="Integer">
+        SELECT is_captain
+        FROM person
+        WHERE id=#{captain_id}
+    </select>
+
+
+    <select id="getTeamIdByCaptainId" resultType="Integer" parameterType="Integer">
+        SELECT team_id
+        FROM person
+        WHERE captain_id = #{captainId}
+    </select>
+
+    <select id="getMembersIdByTeamId" resultType="Integer" parameterType="Integer">
+        SELECT id
+        FROM person
+        WHERE team_id=#{teamId}
+    </select>
+
+    <select id="getInstructorsIdByTeamId" resultType="Integer" parameterType="Integer">
+        SELECT id
+        FROM person
+        WHERE team_id=#{teamId} AND is_instructor=1
+    </select>
+
+    <!--> 根据memberId修改TeamId和comId<-->
+    <update id="updateTeamIdById">
+        UPDATE person
+        SET team_id = #{teamId}
+        WHERE id = #{memberId}
+    </update>
+
+    <update id="updateComIdById">
+        UPDATE person
+        SET com_id = #{comId}
+        WHERE id = #{memberId}
+    </update>
+
+    <!--更改isInstructor><-->
+    <update id="setIsInstructorTrue" parameterType="Integer">
+        UPDATE person
+        SET is_instructor=1
+        WHERE id=#{memberId}
+    </update>
+    <update id="setIsInstructorFalse" parameterType="Integer">
+        UPDATE person
+        SET is_instructor=0
+        WHERE id=#{memberId}
+    </update>
+
+    <!--更改isCaptain><-->
+        <update id="setIsCaptainTrue" parameterType="Integer">
+        UPDATE person
+        SET is_captain=1
+        WHERE id=#{memberId}
+    </update>
+    <update id="setIsCaptainFalse" parameterType="Integer">
+        UPDATE person
+        SET is_captain=0
+        WHERE id=#{memberId}
+    </update>
+
+    <update id="setCaptainIdById">
+        UPDATE person
+        SET captain_id=#{captainId}
+        WHERE id=#{memberId}
+    </update>
+
+    <select id="countMembersByTeamId" resultType="int">
+        SELECT COUNT(*)
+        FROM person
+        WHERE team_id = #{teamId}
+    </select>
+
+    <select id="getTeamIdById">
+        SELECT team_id
+        FROM person
+        WHERE id=#{id}
+    </select>
+
+    <select id="getInstructorsNameByTeamId">
+        SELECT name
+        FROM person
+        WHERE team_id=#{teamId} AND is_instructor=1
+    </select>
+
+    <select id="getMembersIdByTeamIdExceptCaptain">
+        SELECT id
+        FROM person
+        WHERE team_id=#{teamId} AND is_captain=0
+    </select>
+
+    <select id="getMembersNameByTeamIdExceptCaptain">
+        SELECT name
+        FROM person
+        WHERE team_id=#{teamId} AND is_captain=0
+    </select>
+
+    <update id="setNULLTeamIdByIdExceptCaptain">
+        UPDATE person
+        SET team_id=NULL
+        WHERE id=#{id} AND is_captain!=1
+    </update>
+
+    <update id="setNULLComIdByIdExceptCaptain">
+        UPDATE person
+        SET com_id=NULL
+        WHERE id=#{id} AND is_captain!=1
+    </update>
+
+    <select id="selectMembersIdByTeamId">
+        SELECT id
+        FROM person
+        WHERE team_id=#{teamId}
+    </select>
+
+    <update id="setNULLIsInstructorByIdExceptCaptain">
+        UPDATE person
+        SET is_instructor=NULL
+        WHERE id=#{id} AND is_captain!=1
+    </update>
+
+    <update id="setNULLIsCaptainByIdExceptCaptain">
+        UPDATE person
+        SET is_captain=NULL
+        WHERE id=#{id} AND is_captain!=1
+    </update>
+
+    <update id="setNULLCaptainIdByIdExceptCaptain">
+        UPDATE person
+        SET captain_id=NULL
+        WHERE id=#{id} AND is_captain!=1
+    </update>
+
+    <select id="getMembersNameByTeamId">
+        SELECT name
+        FROM person
+        WHERE team_id=#{teamId}
+    </select>
+
+    <select id="selectTeamIdByComId" parameterType="Integer">
+        SELECT DISTINCT team_id
+        FROM person
+        WHERE com_id=#{comId}
+    </select>
+
+    <select id="getTeamNameByTeamId" parameterType="Integer">
+        SELECT team_name
+        FROM PERSON
+        WHERE team_id=#{teamId}
+        LIMIT 1
+    </select>
+
+    <select id="getCaptainIdByTeamId" parameterType="Integer">
+        SELECT id
+        FROM person
+        WHERE team_id=#{teamId} AND is_captain=1
+    </select>
+
+    <select id="getCaptainNameByTeamId" parameterType="Integer">
+        SELECT name
+        FROM person
+        WHERE team_id=#{teamId} AND is_captain=1
+    </select>
+
+    <select id="getComIdByCaptainId" parameterType="Integer">
+        SELECT com_id
+        FROM person
+        WHERE id=#{captainId}
+    </select>
+
+    <select id="getAcademyNameById" parameterType="Integer">
+        SELECT academy_name
+        FROM person
+        WHERE id=#{id}
+    </select>
+
+    <select id="getIsCaptainByUserCode" parameterType="String">
+        SELECT is_captain
+        FROM person
+        WHERE user_code=#{userCode}
+    </select>
+
+    <select id="getIsPrimaryAdminByUserCode" parameterType="String">
+        SELECT is_primary_admin
+        FROM person
+        WHERE user_code=#{userCode}
+    </select>
+
+    <select id="getIsSecondaryAdminByUserCode" parameterType="String">
+        SELECT is_secondary_admin
+        FROM person
+        WHERE user_code=#{userCode}
+    </select>
+
+    <select id="getIsJudgeByUserCode" parameterType="String">
+        SELECT is_judge
+        FROM person
+        WHERE user_code=#{userCode}
+    </select>
+
+    <select id="getIsInstructorByUserCode" parameterType="String">
+        SELECT is_instructor
+        FROM person
+        WHERE user_code=#{userCode}
+    </select>
+
+    <select id="getTeamIdByUserCode">
+        SELECT team_id
+        FROM person
+        WHERE user_code=#{userCode}
+    </select>
+
+    <update id="setJudgeByUserCode">
+        UPDATE person
+        SET is_judge=1
+        WHERE user_code=#{userCode}
+    </update>
+
+    <update id="setComIdByUserCode">
+        UPDATE person
+        SET com_id=#{comId}
+        WHERE user_code=#{userCode}
+    </update>
+
+    <update id="deleteJudgeByUserCode">
+        UPDATE person
+        SET is_judge=0
+        WHERE user_code=#{userCode}
+    </update>
+
+    <update id="deleteComIdByUserCode">
+        UPDATE person
+        SET com_id=NULL
+        WHERE user_code=#{userCode}
+    </update>
+
+    <update id="createSecondaryAdminByUserCode">
+        UPDATE person
+        SET academy_id=#{academyId},com_id=#{comId},is_secondary_admin=1
+        WHERE user_code=#{userCode}
+    </update>
+
+    <update id="deleteSecondaryAdminByUserCode">
+        UPDATE person
+        SET com_id=NULL,is_secondary_admin=0
+        WHERE user_code=#{userCode}
+    </update>
+
+    <select id="getJudgeNameByComId">
+        SELECT name
+        FROM person
+        WHERE com_id=#{comId} AND is_judge=1;
+    </select>
+
+    <select id="getJudgeStudentIdByComId">
+        SELECT student_id
+        FROM person
+        WHERE com_id=#{comId} AND is_judge=1
+    </select>
+
+    <select id="getJudgePhoneByComId">
+        SELECT phone
+        FROM person
+        WHERE com_id=#{comId} AND is_judge=1
+    </select>
+
+    <select id="getCaptainIdByUserCode">
+        SELECT captain_id
+        FROM person
+        WHERE user_code=#{userCode}
+    </select>
+
+    <select id="getComIdByTeamId">
+        SELECT com_id
+        FROM person
+        WHERE team_id=#{teamId} AND is_captain=1
+        LIMIT 1
+    </select>
+
+    <select id="getAcademyIdById">
+        SELECT academy_id
+        FROM person
+        WHERE id=#{id}
+    </select>
+
+    <select id="getStatusByTeamId">
+        SELECT status
+        FROM person
+        WHERE team_id=#{teamId}
+        LIMIT 1
+    </select>
+
+    <select id="getStudentIdByTeamId">
+        SELECT student_id
+        FROM person
+        WHERE team_id=#{teamId}
+    </select>
+
+    <update id="setTeamNameById">
+        UPDATE person
+        SET team_name=#{teamName}
+        WHERE id=#{id}
+    </update>
+
+    <select id="getInstructorStudentIdByTeamId">
+        SELECT student_id
+        FROM person
+        WHERE team_id=#{teamId} AND is_instructor=1
+    </select>
+
+</mapper>
