@@ -60,7 +60,13 @@ public class AdminServiceImpl implements AdminService{
         //把teamId和comId相同的放在一个列表中
         //根据comId寻找
         List<Team> teams = new ArrayList<>();
-        List<Integer> teamIds=personMapper.selectTeamIdByComId(comId);
+        //List<Integer> teamIds=personMapper.selectTeamIdByComId(comId);
+        //排除judge
+        //List<Integer> teamIds=personMapper.selectTeamIdByComIdExceptJudge(comId);
+        List<Integer> teamIds = personMapper.selectCaptainTeamIdByComIdExceptJudge(comId);
+
+
+
         System.out.println(teamIds);
 
         for(int i=0;i<teamIds.size();i++){

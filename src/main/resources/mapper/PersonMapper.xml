@@ -315,4 +315,16 @@
         WHERE team_id=#{teamId} AND is_instructor=1
     </select>
 
+    <select id="selectTeamIdByComIdExceptJudge">
+        SELECT team_id
+        FROM person
+        WHERE com_id=#{comId} AND is_judge!=1
+    </select>
+
+    <select id="selectCaptainTeamIdByComIdExceptJudge">
+        SELECT team_id
+        FROM person
+        WHERE com_id=#{comId} AND is_judge!=1 AND is_captain=1
+    </select>
+
 </mapper>

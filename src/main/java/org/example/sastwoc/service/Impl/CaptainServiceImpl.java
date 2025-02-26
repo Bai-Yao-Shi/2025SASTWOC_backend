@@ -103,16 +103,12 @@ public void deleteMember(int id) {
     //更新队伍信息
     @Override
     public Team updateInformation(TeamInformation teamInformation) {
-        //根据id设置captainName
+
         Person person=new Person();
        //teamId会根据id进行查找
         //此处修改过
         Integer teamId=personMapper.getTeamIdById(teamInformation.getCaptainId());
 
-        System.out.println(teamId);
-        System.out.println(teamId);
-        System.out.println(teamId);
-        System.out.println(teamId);
 
         person.setTeamId(teamId);
         person.setId(teamInformation.getId());
@@ -293,9 +289,11 @@ public void deleteMember(int id) {
         if (existingPerson != null) {
             existingPerson.setName(person.getName());
             existingPerson.setStudentId(person.getStudentId());
-            existingPerson.setTeamId(person.getTeamId());
+            //existingPerson.setTeamId(person.getTeamId());
             existingPerson.setAcademyId(person.getAcademyId());
             existingPerson.setPhone(person.getPhone());
+
+
             personMapper.updateById(existingPerson);
         }else{
             throw new SystemException(Status.USER_NOT_EXIST);

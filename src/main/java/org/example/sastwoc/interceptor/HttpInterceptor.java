@@ -38,9 +38,25 @@ public class HttpInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        // 解析 JWT token 获取用户信息
-        User user = JwtUtils.resolveJwt(request.getHeader("token"));
+        String authorization=request.getHeader("Authorization");
+        String token = authorization.replace("Bearer ", "");
+
+        User user = JwtUtils.resolveJwt(token);
         String userCode = user.getUser_code();
+
+        if(request.getHeader("Authorization")==null){
+         throw new SystemException(Status.FAIL.getCode(), "未登录！");
+      }
+        if (authorization != null && authorization.startsWith("Bearer ")) {
+         user = JwtUtils.resolveJwt(authorization.substring(7));
+      }else {
+            throw new SystemException(Status.FAIL.getCode(), "未登录！");
+        }
+
+      if (user == null) {
+         throw new SystemException(Status.FAIL.getCode(), "未登录！");
+      }
+
 
         // 获取用户角色
         Set<String> userRoles = getUserRoles(userCode);

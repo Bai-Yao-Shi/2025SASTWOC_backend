@@ -23,12 +23,18 @@ public class LoginInterceptor implements HandlerInterceptor {
       }
 
       //首先从Header中取出JWT
-      String token = request.getHeader("token");
+      if(request.getHeader("Authorization")==null){
+         throw new SystemException(Status.FAIL.getCode(), "未登录！");
+      }
 
-      //判断是否包含JWT且格式正确
-      User user = null;
-      if (token != null) {
-         user = JwtUtils.resolveJwt(token);
+        String authorization=request.getHeader("Authorization");
+        String token = authorization.replace("Bearer ", "");
+
+        User user = JwtUtils.resolveJwt(token);
+
+
+        if (authorization != null && authorization.startsWith("Bearer ")) {
+         user = JwtUtils.resolveJwt(authorization.substring(7));
       }
 
       if (user == null) {

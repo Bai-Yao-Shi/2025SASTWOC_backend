@@ -16,6 +16,9 @@ public class JudgeServiceImpl implements JudgeService {
     //评分
     @Override
     public void judge(ScoreRepository score) {
+
+
+
         scoreMapper.insertOrUpdate(score);
     }
 

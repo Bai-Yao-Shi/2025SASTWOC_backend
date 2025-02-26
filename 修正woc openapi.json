@@ -1,0 +1,2098 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "修正woc",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "academy"
+    },
+    {
+      "name": "judge"
+    },
+    {
+      "name": "admin"
+    },
+    {
+      "name": "captain"
+    }
+  ],
+  "paths": {
+    "/academy/captain": {
+      "post": {
+        "summary": "创建队长账号(新)",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "string"
+                  },
+                  "comId": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "userCode",
+                  "comId"
+                ],
+                "required": [
+                  "userCode",
+                  "comId"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/academy",
+        "x-apifox-status": "developing",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263915828-run"
+      }
+    },
+    "/academy/team": {
+      "get": {
+        "summary": "获取队伍列表（必做）",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "academy"
+        ],
+        "parameters": [
+          {
+            "name": "comId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/TeamModel"
+                      }
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "data",
+                    "errMsg",
+                    "errCode"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/academy",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845403-run"
+      }
+    },
+    "/academy/judge": {
+      "post": {
+        "summary": "创建评委",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "academy"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "string"
+                  },
+                  "comId": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "userCode",
+                  "comId"
+                ],
+                "x-apifox-orders": [
+                  "userCode",
+                  "comId"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/academy",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845404-run"
+      },
+      "delete": {
+        "summary": "删除评委",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "academy"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "userCode"
+                ],
+                "x-apifox-orders": [
+                  "userCode"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalResponse"
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/academy",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845405-run"
+      },
+      "get": {
+        "summary": "评委列表",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "academy"
+        ],
+        "parameters": [
+          {
+            "name": "comId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/academy",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845406-run"
+      }
+    },
+    "/judge": {
+      "post": {
+        "summary": "评分",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "judge"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Score"
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalResponse"
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/judge",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845407-run"
+      },
+      "patch": {
+        "summary": "修改评分",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "judge"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Score"
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalResponse"
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/judge",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845408-run"
+      }
+    },
+    "/admin/competition": {
+      "post": {
+        "summary": "创建比赛（必做）",
+        "deprecated": false,
+        "description": "##### 超级管理员创建比赛\n\n",
+        "tags": [
+          "admin"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "minTeamMembers": {
+                    "type": "integer"
+                  },
+                  "maxTeamMembers": {
+                    "type": "integer"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "string"
+                  },
+                  "reviewBeginTime": {
+                    "type": "string"
+                  },
+                  "reviewEndTime": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "minTeamMembers",
+                  "description",
+                  "name",
+                  "reviewEndTime",
+                  "reviewBeginTime",
+                  "endTime",
+                  "startTime",
+                  "maxTeamMembers"
+                ],
+                "x-apifox-orders": [
+                  "name",
+                  "description",
+                  "minTeamMembers",
+                  "maxTeamMembers",
+                  "startTime",
+                  "endTime",
+                  "reviewBeginTime",
+                  "reviewEndTime"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "minTeamMembers": {
+                          "type": "integer"
+                        },
+                        "maxTeamMembers": {
+                          "type": "integer"
+                        },
+                        "workCode": {
+                          "type": "string"
+                        },
+                        "startTime": {
+                          "type": "string"
+                        },
+                        "endTime": {
+                          "type": "string"
+                        },
+                        "reviewBeginTime": {
+                          "type": "string"
+                        },
+                        "reviewEndTime": {
+                          "type": "string"
+                        },
+                        "createTime": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "description",
+                        "minTeamMembers",
+                        "maxTeamMembers",
+                        "workCode",
+                        "startTime",
+                        "endTime",
+                        "reviewBeginTime",
+                        "reviewEndTime",
+                        "createTime"
+                      ],
+                      "x-apifox-orders": [
+                        "id",
+                        "name",
+                        "description",
+                        "minTeamMembers",
+                        "maxTeamMembers",
+                        "workCode",
+                        "startTime",
+                        "endTime",
+                        "reviewBeginTime",
+                        "reviewEndTime",
+                        "createTime"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/admin",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845409-run"
+      }
+    },
+    "/admin/academy": {
+      "post": {
+        "summary": "创建二级管理员",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "admin"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "string"
+                  },
+                  "academyId": {
+                    "type": "integer"
+                  },
+                  "comId": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "userCode",
+                  "academyId",
+                  "comId"
+                ],
+                "x-apifox-orders": [
+                  "userCode",
+                  "academyId",
+                  "comId"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/admin",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845410-run"
+      },
+      "delete": {
+        "summary": "删除二级管理员",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "admin"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "userCode"
+                ],
+                "x-apifox-orders": [
+                  "userCode"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalResponse"
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/admin",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845411-run"
+      }
+    },
+    "/admin/judge": {
+      "post": {
+        "summary": "创建评委",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "admin"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "string"
+                  },
+                  "academyId": {
+                    "type": "integer"
+                  },
+                  "comId": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "userCode",
+                  "comId",
+                  "academyId"
+                ],
+                "x-apifox-orders": [
+                  "userCode",
+                  "academyId",
+                  "comId"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/admin",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845412-run"
+      },
+      "delete": {
+        "summary": "删除评委",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "admin"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "userCode"
+                ],
+                "x-apifox-orders": [
+                  "userCode"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalResponse"
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/admin",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845413-run"
+      },
+      "get": {
+        "summary": "评委列表",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "admin"
+        ],
+        "parameters": [
+          {
+            "name": "comId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/admin",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845414-run"
+      }
+    },
+    "/captain/team": {
+      "post": {
+        "summary": "更新队伍信息（必做）",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "captain"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Team"
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/TeamModel"
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "data",
+                    "errMsg",
+                    "errCode"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/captain",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845415-run"
+      },
+      "get": {
+        "summary": "获取队伍信息（必做）",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/TeamModel"
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845399-run"
+      }
+    },
+    "/captain/team/{teamId}/member": {
+      "post": {
+        "summary": "添加成员（必做）",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "captain"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Member"
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalResponse"
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/captain",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845416-run"
+      },
+      "delete": {
+        "summary": "删除成员（必做）",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "captain"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "description": "member id"
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "x-apifox-orders": [
+                  "id"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/captain",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845417-run"
+      },
+      "patch": {
+        "summary": "修改成员信息（必做）",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "captain"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Member"
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalResponse"
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/captain",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845418-run"
+      },
+      "get": {
+        "summary": "获取成员列表（必做）",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "captain"
+        ],
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "studentId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "academy": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "studentId",
+                          "name",
+                          "academy"
+                        ],
+                        "x-apifox-orders": [
+                          "studentId",
+                          "name",
+                          "academy"
+                        ],
+                        "x-apifox-ignore-properties": []
+                      }
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc/captain",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845419-run"
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "登录（必做）",
+        "deprecated": false,
+        "description": "##### 用户登录接口\n- 使用jwt令牌\n- 按照Bearer Token规范使用",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "userCode",
+                  "password"
+                ],
+                "x-apifox-orders": [
+                  "userCode",
+                  "password"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "token": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "token"
+                      ],
+                      "x-apifox-orders": [
+                        "token"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "success": true,
+                      "errCode": 0,
+                      "errMsg": "string",
+                      "data": {
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [],
+        "x-apifox-folder": "修正woc",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845400-run"
+      }
+    },
+    "/competitions": {
+      "get": {
+        "summary": "获取比赛列表（必做）",
+        "deprecated": false,
+        "description": "#####  获取比赛列表\n- 超级管理员和二级管理员可以看到所有的比赛，队长只能看到自己参加的比赛",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Competition"
+                      }
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "data",
+                    "errMsg",
+                    "errCode"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc",
+        "x-apifox-status": "released",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263845401-run"
+      }
+    },
+    "/register": {
+      "post": {
+        "summary": "注册(新)",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userCode": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "userCode",
+                  "password"
+                ],
+                "required": [
+                  "userCode",
+                  "password"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01JMVC5R9X9BEPWGQREJCSF1R0"
+                  ],
+                  "x-apifox-refs": {
+                    "01JMVC5R9X9BEPWGQREJCSF1R0": {
+                      "$ref": "#/components/schemas/GlobalResponse"
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ]
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc",
+        "x-apifox-status": "developing",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263849724-run"
+      }
+    },
+    "/user/userdetail": {
+      "post": {
+        "summary": "添加或更新个人信息(新)",
+        "deprecated": false,
+        "description": "更改的个人信息为携带token者的",
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "studentId": {
+                    "type": "string"
+                  },
+                  "academyId": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "name",
+                  "studentId",
+                  "academyId",
+                  "phone"
+                ],
+                "required": [
+                  "name",
+                  "studentId",
+                  "academyId",
+                  "phone"
+                ],
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "errCode": {
+                      "type": "integer"
+                    },
+                    "errMsg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-orders": [
+                    "success",
+                    "errCode",
+                    "errMsg",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": []
+                }
+              }
+            },
+            "headers": {},
+            "x-apifox-name": "成功"
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-apifox-folder": "修正woc",
+        "x-apifox-status": "developing",
+        "x-run-in-apifox": "https://app.apifox.com/web/project/5750446/apis/api-263857678-run"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Team": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "comId": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "captainId": {
+            "type": "integer"
+          },
+          "captainName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          },
+          "memberIds": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "instructorIds": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "createTime": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "comId",
+          "name",
+          "captainId",
+          "captainName",
+          "memberIds",
+          "instructorIds",
+          "status",
+          "createTime"
+        ],
+        "x-apifox-orders": [
+          "id",
+          "comId",
+          "name",
+          "captainId",
+          "captainName",
+          "status",
+          "memberIds",
+          "instructorIds",
+          "createTime"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Schemas"
+      },
+      "TeamModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "comId": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "captainId": {
+            "type": "integer"
+          },
+          "captainName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          },
+          "memberNames": {
+            "type": "string",
+            "description": "学号加姓名格式\n例如：B24XXXXXX某某某"
+          },
+          "instructorNames": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "comId",
+          "name",
+          "captainId",
+          "captainName",
+          "memberNames",
+          "instructorNames",
+          "status"
+        ],
+        "x-apifox-orders": [
+          "id",
+          "comId",
+          "name",
+          "captainId",
+          "captainName",
+          "status",
+          "memberNames",
+          "instructorNames"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Schemas"
+      },
+      "GlobalResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "errCode": {
+            "type": "integer"
+          },
+          "errMsg": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [],
+            "x-apifox-ignore-properties": []
+          }
+        },
+        "required": [
+          "success",
+          "data",
+          "errMsg",
+          "errCode"
+        ],
+        "x-apifox-orders": [
+          "success",
+          "errCode",
+          "errMsg",
+          "data"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Schemas"
+      },
+      "Score": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "judgeId": {
+            "type": "string"
+          },
+          "workCode": {
+            "type": "string"
+          },
+          "teamId": {
+            "type": "integer"
+          },
+          "comId": {
+            "type": "integer"
+          },
+          "score": {
+            "type": "integer"
+          },
+          "comment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "judgeId",
+          "workCode",
+          "teamId",
+          "comId",
+          "score",
+          "comment"
+        ],
+        "x-apifox-orders": [
+          "id",
+          "judgeId",
+          "workCode",
+          "teamId",
+          "comId",
+          "score",
+          "comment"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Schemas"
+      },
+      "Member": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "studentId": {
+            "type": "string"
+          },
+          "teamId": {
+            "type": "integer"
+          },
+          "academyId": {
+            "type": "integer"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "isCaptain": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "phone",
+          "academyId",
+          "teamId",
+          "studentId",
+          "name",
+          "isCaptain"
+        ],
+        "x-apifox-orders": [
+          "id",
+          "name",
+          "studentId",
+          "teamId",
+          "academyId",
+          "phone",
+          "isCaptain"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Schemas"
+      },
+      "Competition": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "minTeamMembers": {
+            "type": "integer"
+          },
+          "maxTeamMembers": {
+            "type": "integer"
+          },
+          "workCode": {
+            "type": "string"
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "reviewBeginTime": {
+            "type": "string"
+          },
+          "reviewEndTime": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "minTeamMembers",
+          "description",
+          "name",
+          "reviewEndTime",
+          "reviewBeginTime",
+          "endTime",
+          "startTime",
+          "workCode",
+          "maxTeamMembers",
+          "createTime"
+        ],
+        "x-apifox-orders": [
+          "id",
+          "name",
+          "description",
+          "minTeamMembers",
+          "maxTeamMembers",
+          "workCode",
+          "startTime",
+          "endTime",
+          "reviewBeginTime",
+          "reviewEndTime",
+          "createTime"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": "Schemas"
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "servers": [],
+  "security": []
+}

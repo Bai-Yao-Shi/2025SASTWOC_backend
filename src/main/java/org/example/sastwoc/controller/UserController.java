@@ -1,5 +1,6 @@
 package org.example.sastwoc.controller;
 
+import org.apache.tomcat.util.http.parser.Authorization;
 import org.example.sastwoc.DTO.LoginUserDto;
 import org.example.sastwoc.DTO.RegisterUserDto;
 import org.example.sastwoc.entity.Person;
@@ -45,8 +46,11 @@ public class UserController {
 
     @PostMapping("/user/userdetail")
     public Result userdetail(@RequestBody Person person) {
-        String userCode = JwtUtils.resolveJwt(httpServletRequest.getHeader("token")).getUser_code();
+        String authorization=httpServletRequest.getHeader("Authorization");
+        String token = authorization.replace("Bearer ", "");
+        String userCode = JwtUtils.resolveJwt(token).getUser_code();
         person.setUserCode(userCode);
+
         userService.addOrUpdateUser(person);
         return Result.success();
     }

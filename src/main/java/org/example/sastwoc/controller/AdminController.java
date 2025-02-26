@@ -27,7 +27,15 @@ public class AdminController {
     @PostMapping("/competition")
     //未加workCode
     public Result competitionCreate(@RequestBody Competition competition){
-        String userCode = (JwtUtils.resolveJwt(httpServletRequest.getHeader("token"))).getUser_code();
+
+
+        //String userCode = (JwtUtils.resolveJwt(httpServletRequest.getHeader("token"))).getUser_code();
+
+        String authorization=httpServletRequest.getHeader("Authorization");
+        String token = authorization.replace("Bearer ", "");
+        String userCode = JwtUtils.resolveJwt(token).getUser_code();
+
+
         competition.setWorkCode(userCode);
         adminService.addCompetition(competition);
         return Result.success(competition);

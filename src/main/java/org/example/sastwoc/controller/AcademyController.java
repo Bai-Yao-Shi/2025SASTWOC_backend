@@ -27,13 +27,8 @@ public class AcademyController {
 
     @PostMapping("/captain")
     public Result captainCreate(@RequestBody Person person) {
-        try{
             adminService.createCaptain(person);
             return Result.success();
-        }catch (SystemException e){
-            return Result.fail(e.getCode(),e.getMessage());
-        }
-
 
     }
 

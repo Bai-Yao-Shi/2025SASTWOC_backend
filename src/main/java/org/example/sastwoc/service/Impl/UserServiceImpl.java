@@ -84,7 +84,8 @@ public String login(LoginUserDto dto) {
 
     @Override
     public void addOrUpdateUser(Person person) {
-       //查询userCode如果存在则更新，不存在则插入
+
+        //查询userCode如果存在则更新，不存在则插入
         QueryWrapper<Person> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_code", person.getUserCode());
         Person existingPerson=personMapper.selectOne(queryWrapper);

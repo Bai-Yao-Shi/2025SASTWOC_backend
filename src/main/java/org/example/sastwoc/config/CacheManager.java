@@ -13,8 +13,6 @@ public class CacheManager {
     //public static Map<String,Set<String>> USER_ROLE_MAP=new HashMap<>();
 
     static {
-        URI_ROLE_MAP.put("/**", Sets.newHashSet("primary_admin"));
-
         URI_ROLE_MAP.put("/academy/**", Sets.newHashSet("primary_admin","secondary_admin"));
 
 
@@ -25,8 +23,8 @@ public class CacheManager {
 
 
 
-        URI_ROLE_MAP.put("/captain", Sets.newHashSet("captain"));
-        URI_ROLE_MAP.put("/captain/team", Sets.newHashSet("captain"));
+//        URI_ROLE_MAP.put("/captain", Sets.newHashSet("captain"));
+//        URI_ROLE_MAP.put("/captain/team", Sets.newHashSet("captain"));
         URI_ROLE_MAP.put("/captain/**", Sets.newHashSet("captain","secondary_admin","primary_admin"));
 
 

@@ -1,6 +1,7 @@
 package org.example.sastwoc.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
@@ -120,6 +121,10 @@ public interface PersonMapper extends BaseMapper<Person> {
     List<String> getInstructorStudentIdByTeamId(@Param("teamId") Integer teamId);
 
     void setTeamNameById(@Param("teamName") String teamName, @Param("id") Integer id);
+
+    List<Integer> selectTeamIdByComIdExceptJudge(@Param("comId") Integer comId);
+
+    List<Integer> selectCaptainTeamIdByComIdExceptJudge(@Param("comId") Integer comId);
 
 
 

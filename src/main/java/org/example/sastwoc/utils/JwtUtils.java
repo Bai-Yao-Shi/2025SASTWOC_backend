@@ -31,8 +31,8 @@ public class JwtUtils {
             //配置JWT自定义信息
             //.withClaim("id", user.getId())
             .withClaim("userCode", user.getUser_code())
-//            .withExpiresAt(calendar.getTime())  //设置过期时间
-//            .withIssuedAt(now)    //设置创建时间
+            .withExpiresAt(calendar.getTime())  //设置过期时间
+            .withIssuedAt(now)    //设置创建时间
             .sign(Algorithm.HMAC256(key));   //最终签名
    }
 

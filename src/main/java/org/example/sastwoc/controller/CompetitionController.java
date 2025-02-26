@@ -31,7 +31,11 @@ public class CompetitionController {
 
 @GetMapping
 public Result competitionGet(HttpServletRequest request) {
-    String userCode = JwtUtils.resolveJwt(request.getHeader("token")).getUser_code();
+    //String userCode = JwtUtils.resolveJwt(request.getHeader("token")).getUser_code();
+    String authorization=request.getHeader("Authorization");
+    String token = authorization.replace("Bearer ", "");
+    String userCode = JwtUtils.resolveJwt(token).getUser_code();
+
 
     // 检查是否为管理员
     Integer isPrimaryAdmin = personMapper.getIsPrimaryAdminByUserCode(userCode);
