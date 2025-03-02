@@ -25,7 +25,6 @@ public class AdminController {
 
     //创建比赛
     @PostMapping("/competition")
-    //未加workCode
     public Result competitionCreate(@RequestBody Competition competition){
 
 
